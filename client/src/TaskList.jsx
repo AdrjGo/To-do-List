@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Form from "./components/Form";
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
@@ -11,13 +12,18 @@ function TaskList() {
   }, []);
 
   return (
-    <main className="text-center border-2">
-      <h1 className="text-[5vw]">Lista de Tareas</h1>
-      <ul>
-        {tasks.map((task) => (
-          <li key={task.id}>{task.task} - {task.completed ? "Completada" : "Pendiente"}</li>
-        ))}
-      </ul>
+    <main className="grid place-items-center h-screen">
+      <div className="flex flex-col items-center justify-center border-2 p-5 rounded-lg">
+        <h1 className="text-[4vw] font-bold my-2">Lista de Tareas</h1>
+        <Form />
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id}>
+              {task.task} - {task.completed ? "Completada" : "Pendiente"}
+            </li>
+          ))}
+        </ul>
+      </div>
     </main>
   );
 }
